@@ -6,7 +6,9 @@ import lombok.*;
 import org.hibernate.annotations.Cascade;
 
 import java.time.LocalDate;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 import java.util.UUID;
 
 @Entity
@@ -22,22 +24,20 @@ public class OS {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private UUID id;
 
+    @Column(nullable = false)
     private String descricao;
 
-    @ManyToOne
-    @JoinColumn(name = "id_executor")
-    private Colaborador executor;
+    @Column(nullable = false)
+    private LocalDate abertura;
+
+    private LocalDate encerramento;
 
     @ManyToOne
     @JoinColumn(name = "id_colaborador")
     private Colaborador colaborador;
 
-    private LocalDate abertura;
-
-    private LocalDate encerramento;
-
-    @OneToMany(mappedBy = "os")
-    private List<Comentario> comentarios;
+    @OneToMany(mappedBy = "os", fetch = FetchType.EAGER)
+    private Set<Comentario> listCom = new HashSet<>();
 
 
 }

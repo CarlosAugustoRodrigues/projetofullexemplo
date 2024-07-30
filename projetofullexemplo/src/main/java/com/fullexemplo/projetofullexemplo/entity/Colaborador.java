@@ -1,9 +1,11 @@
 package com.fullexemplo.projetofullexemplo.entity;
 
+import com.fullexemplo.projetofullexemplo.dtos.colaborador.ColReqRecordDTO;
 import jakarta.persistence.*;
 import lombok.*;
 
-import java.util.List;
+import java.util.HashSet;
+import java.util.Set;
 import java.util.UUID;
 
 @Entity
@@ -18,15 +20,31 @@ public class Colaborador {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private UUID id;
+
+    @Column(nullable = false)
     private String nome;
+
+    @Column(nullable = false)
     private String cargo;
+
+    @Column(nullable = false)
     private String setor;
+
+    @Column(nullable = false, unique = true)
     private String pin;
 
-    @OneToMany(mappedBy = "colaborador")
-    private List<OS> ordens_servico;
+    @OneToMany(mappedBy = "colaborador", fetch = FetchType.EAGER)
+    private Set<OS> listOs = new HashSet<>();
 
-    @OneToMany(mappedBy = "colaborador")
-    private List<Comentario> comentarios;
+
+    @OneToMany(mappedBy = "colaborador", fetch = FetchType.EAGER)
+    private Set<Comentario> listCom = new HashSet<>();
+
+    public Colaborador(ColReqRecordDTO data) {
+        setNome(data.nome());
+        setCargo(data.cargo());
+        setSetor(data.setor());
+        setPin(data.pin());
+    }
 
 }
