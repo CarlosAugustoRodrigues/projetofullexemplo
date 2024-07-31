@@ -19,8 +19,8 @@ public record ComResRecordDTO(
                 data.getId(),
                 data.getData_comentario(),
                 data.getComentario(),
-                data.getOs(),
-                data.getColaborador()
+                data.getComOs(),
+                data.getComCol()
         );
     }
 }

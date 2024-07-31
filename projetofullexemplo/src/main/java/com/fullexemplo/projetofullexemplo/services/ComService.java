@@ -65,10 +65,10 @@ public class ComService {
             return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Comentario não encontrado!");
         }
 
-        com.setData_comentario(data.data_comentario());
+        com.setData_comentario(data.dataComentario());
         com.setComentario(data.comentario());
-        com.setOs(data.os());
-        com.setColaborador(data.colaborador());
+        com.setCom_os(data.os());
+        com.setCom_col(data.colaborador());
 
         comRepository.save(com);
 

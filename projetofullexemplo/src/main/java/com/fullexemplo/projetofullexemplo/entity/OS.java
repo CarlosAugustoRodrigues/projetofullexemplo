@@ -31,18 +31,16 @@ public class OS {
     private LocalDate encerramento;
 
     @ManyToOne
-    @JoinColumn(name = "id_colaborador")
-    private Colaborador colaborador;
+    @JoinColumn(name = "id_colaborador", referencedColumnName = "id")
+    private Colaborador osCol;
 
-    @OneToMany(mappedBy = "os", fetch = FetchType.EAGER)
+    @OneToMany(mappedBy = "com_os", fetch = FetchType.EAGER, cascade = CascadeType.ALL)
     private Set<Comentario> listCom = new HashSet<>();
 
     public OS(OSReqRecordDTO data) {
         setDescricao(data.descricao());
         setAbertura(data.abertura());
         setEncerramento(data.encerramento());
-        setColaborador(data.colaborador());
+        setOsCol(data.colaborador());
     }
-
-
 }

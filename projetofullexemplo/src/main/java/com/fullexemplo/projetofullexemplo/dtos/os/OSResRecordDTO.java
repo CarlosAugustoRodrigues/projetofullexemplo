@@ -23,7 +23,7 @@ public record OSResRecordDTO(
                 data.getDescricao(),
                 data.getAbertura(),
                 data.getEncerramento(),
-                data.getColaborador(),
+                data.getOsCol(),
                 data.getListCom()
         );
     }

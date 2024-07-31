@@ -27,17 +27,17 @@ public class Comentario {
     private String comentario;
 
     @ManyToOne
-    @JoinColumn(name = "id_os")
-    private OS os;
+    @JoinColumn(name = "id_os", referencedColumnName = "id")
+    private OS comOs;
 
     @ManyToOne
-    @JoinColumn(name = "id_colaborador")
-    private Colaborador colaborador;
+    @JoinColumn(name = "id_colaborador", referencedColumnName = "id")
+    private Colaborador comCol;
 
     public Comentario(ComReqRecordDTO data) {
-        setData_comentario(data.data_comentario());
+        setData_comentario(data.dataComentario());
         setComentario(data.comentario());
-        setOs(data.os());
-        setColaborador(data.colaborador());
+        setComOs(data.os());
+        setComCol(data.colaborador());
     }
 }

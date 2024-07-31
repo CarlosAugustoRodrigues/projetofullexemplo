@@ -33,11 +33,11 @@ public class Colaborador {
     @Column(nullable = false, unique = true)
     private String pin;
 
-    @OneToMany(mappedBy = "colaborador", fetch = FetchType.EAGER)
+    @OneToMany(mappedBy = "os_col", fetch = FetchType.EAGER, cascade = CascadeType.ALL)
     private Set<OS> listOs = new HashSet<>();
 
 
-    @OneToMany(mappedBy = "colaborador", fetch = FetchType.EAGER)
+    @OneToMany(mappedBy = "com_col", fetch = FetchType.EAGER, cascade = CascadeType.ALL)
     private Set<Comentario> listCom = new HashSet<>();
 
     public Colaborador(ColReqRecordDTO data) {

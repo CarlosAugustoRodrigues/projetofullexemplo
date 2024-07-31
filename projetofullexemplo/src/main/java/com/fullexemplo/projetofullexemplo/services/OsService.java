@@ -62,7 +62,7 @@ public class OsService {
         os.setDescricao(data.descricao());
         os.setAbertura(data.abertura());
         os.setEncerramento(data.encerramento());
-        os.setColaborador(data.colaborador());
+        os.setOs_col(data.colaborador());
 
         osRepository.save(os);
 

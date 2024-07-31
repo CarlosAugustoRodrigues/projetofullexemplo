@@ -6,7 +6,7 @@ import com.fullexemplo.projetofullexemplo.entity.OS;
 import java.time.LocalDate;
 
 public record ComReqRecordDTO(
-        LocalDate data_comentario,
+        LocalDate dataComentario,
         String comentario,
         OS os,
         Colaborador colaborador
