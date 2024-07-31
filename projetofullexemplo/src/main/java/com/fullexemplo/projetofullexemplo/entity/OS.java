@@ -1,13 +1,11 @@
 package com.fullexemplo.projetofullexemplo.entity;
 
-import jakarta.annotation.Nullable;
+import com.fullexemplo.projetofullexemplo.dtos.os.OSReqRecordDTO;
 import jakarta.persistence.*;
 import lombok.*;
-import org.hibernate.annotations.Cascade;
 
 import java.time.LocalDate;
 import java.util.HashSet;
-import java.util.List;
 import java.util.Set;
 import java.util.UUID;
 
@@ -38,6 +36,13 @@ public class OS {
 
     @OneToMany(mappedBy = "os", fetch = FetchType.EAGER)
     private Set<Comentario> listCom = new HashSet<>();
+
+    public OS(OSReqRecordDTO data) {
+        setDescricao(data.descricao());
+        setAbertura(data.abertura());
+        setEncerramento(data.encerramento());
+        setColaborador(data.colaborador());
+    }
 
 
 }

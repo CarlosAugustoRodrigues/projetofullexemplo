@@ -5,5 +5,10 @@ import com.fullexemplo.projetofullexemplo.entity.OS;
 
 import java.time.LocalDate;
 
-public record ComReqRecordDTO(LocalDate data_comentario, String comentario, OS os, Colaborador colaborador) {
+public record ComReqRecordDTO(
+        LocalDate data_comentario,
+        String comentario,
+        OS os,
+        Colaborador colaborador
+) {
 }
