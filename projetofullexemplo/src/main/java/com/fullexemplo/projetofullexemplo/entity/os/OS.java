@@ -1,6 +1,7 @@
-package com.fullexemplo.projetofullexemplo.entity;
+package com.fullexemplo.projetofullexemplo.entity.os;
 
-import com.fullexemplo.projetofullexemplo.dtos.os.OSReqRecordDTO;
+import com.fullexemplo.projetofullexemplo.entity.colaborador.Colaborador;
+import com.fullexemplo.projetofullexemplo.entity.comentario.Comentario;
 import jakarta.persistence.*;
 import lombok.*;
 
@@ -32,15 +33,8 @@ public class OS {
 
     @ManyToOne
     @JoinColumn(name = "id_colaborador", referencedColumnName = "id")
-    private Colaborador osCol;
+    private Colaborador colaborador;
 
-    @OneToMany(mappedBy = "com_os", fetch = FetchType.EAGER, cascade = CascadeType.ALL)
-    private Set<Comentario> listCom = new HashSet<>();
-
-    public OS(OSReqRecordDTO data) {
-        setDescricao(data.descricao());
-        setAbertura(data.abertura());
-        setEncerramento(data.encerramento());
-        setOsCol(data.colaborador());
-    }
+    @OneToMany(mappedBy = "os", fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+    private Set<Comentario> listaCom = new HashSet<>();
 }
