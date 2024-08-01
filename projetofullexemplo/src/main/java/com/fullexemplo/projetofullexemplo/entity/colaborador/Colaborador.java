@@ -34,7 +34,7 @@ public class Colaborador {
     @Column(nullable = false)
     private String setor;
 
-    @OneToOne(cascade = CascadeType.ALL)
+    @OneToOne(cascade = CascadeType.ALL, mappedBy = "colaborador")
     @JoinColumn(name = "id_usuario")
     private Usuario usuario;
 

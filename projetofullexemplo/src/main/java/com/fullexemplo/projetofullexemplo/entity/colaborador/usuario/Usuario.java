@@ -27,7 +27,7 @@ public class Usuario {
     private String pin;
 
     @OneToOne
-    @JoinColumn(name = "id_colaborador")
+    @JoinColumn(name = "id_colaborador", referencedColumnName = "id")
     private Colaborador colaborador;
 
 }
