@@ -1,5 +1,6 @@
-package com.fullexemplo.projetofullexemplo.entity.colaborador;
+package com.fullexemplo.projetofullexemplo.entity.colaborador.usuario;
 
+import com.fullexemplo.projetofullexemplo.entity.colaborador.Colaborador;
 import jakarta.persistence.*;
 import lombok.*;
 

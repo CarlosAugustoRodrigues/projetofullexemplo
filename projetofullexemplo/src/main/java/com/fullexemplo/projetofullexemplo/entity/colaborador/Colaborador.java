@@ -1,5 +1,8 @@
 package com.fullexemplo.projetofullexemplo.entity.colaborador;
 
+import com.fullexemplo.projetofullexemplo.dtos.colaborador.ColReqRecordDTO;
+import com.fullexemplo.projetofullexemplo.dtos.colaborador.usuario.UsuReqRecordDTO;
+import com.fullexemplo.projetofullexemplo.entity.colaborador.usuario.Usuario;
 import com.fullexemplo.projetofullexemplo.entity.comentario.Comentario;
 import com.fullexemplo.projetofullexemplo.entity.os.OS;
 import jakarta.persistence.*;
@@ -40,4 +43,10 @@ public class Colaborador {
 
     @OneToMany(mappedBy = "colaborador", fetch = FetchType.EAGER, cascade = CascadeType.ALL)
     private Set<Comentario> listaCom = new HashSet<>();
+
+    public Colaborador(ColReqRecordDTO data) {
+        setNome(data.nome());
+        setCargo(data.cargo());
+        setSetor(data.setor());
+    }
 }
