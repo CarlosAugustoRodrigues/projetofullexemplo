@@ -1,5 +1,7 @@
 package com.fullexemplo.projetofullexemplo.entity.colaborador;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import com.fullexemplo.projetofullexemplo.dtos.colaborador.ColReqRecordDTO;
 import com.fullexemplo.projetofullexemplo.dtos.colaborador.usuario.UsuReqRecordDTO;
 import com.fullexemplo.projetofullexemplo.entity.colaborador.usuario.Usuario;
@@ -35,7 +37,8 @@ public class Colaborador {
     private String setor;
 
     @OneToOne(cascade = CascadeType.ALL, mappedBy = "colaborador")
-    @JoinColumn(name = "id_usuario")
+    @JoinColumn(name = "info_usuario")
+    @JsonIgnore
     private Usuario usuario;
 
     @OneToMany(mappedBy = "colaborador", fetch = FetchType.EAGER, cascade = CascadeType.ALL)

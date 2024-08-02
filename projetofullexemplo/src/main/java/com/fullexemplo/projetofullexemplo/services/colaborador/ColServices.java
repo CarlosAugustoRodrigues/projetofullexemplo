@@ -34,7 +34,6 @@ public class ColServices {
     }
 
     public List<ColResRecordDTO> readAll() {
-
         List<ColResRecordDTO> listaCol = colaboradorRepository
                 .findAll()
                 .stream()
@@ -56,7 +55,7 @@ public class ColServices {
         var col0 = colaboradorRepository.findById(id);
 
         if (col0.isEmpty()) {
-            return null;
+            return "COLABORADOR NÃO ENCONTRADO!";
         }
 
         var colaborador = col0.get();
@@ -74,11 +73,11 @@ public class ColServices {
        var col0 = colaboradorRepository.findById(id);
 
        if (col0.isEmpty()) {
-           return "NOT_FOUND!";
+           return "COLABORADOR NÃO ENCONTRADO!";
        }
 
        colaboradorRepository.delete(col0.get());
 
-       return "COLABORADOR DELETED!";
+       return "COLABORADOR EXCLUÍDO COM SUCESSO!";
     }
 }

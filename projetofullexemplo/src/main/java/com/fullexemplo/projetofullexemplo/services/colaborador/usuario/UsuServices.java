@@ -49,7 +49,8 @@ public class UsuServices {
 
         dadosUsuario.setMatricula(data.matricula());
         dadosUsuario.setPin(data.pin());
-        dadosUsuario.setColaborador(colaboradorRepository.findById(data.idColaborador()).get());
+        var colaborador = colaboradorRepository.findById(data.idColaborador()).get();
+        dadosUsuario.setColaborador(colaborador);
 
         usuarioRepository.save(dadosUsuario);
 

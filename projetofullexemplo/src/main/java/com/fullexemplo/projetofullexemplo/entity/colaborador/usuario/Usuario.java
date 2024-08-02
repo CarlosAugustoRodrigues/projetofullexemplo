@@ -1,5 +1,7 @@
 package com.fullexemplo.projetofullexemplo.entity.colaborador.usuario;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fullexemplo.projetofullexemplo.entity.colaborador.Colaborador;
 import jakarta.persistence.*;
 import lombok.*;
@@ -27,7 +29,10 @@ public class Usuario {
     private String pin;
 
     @OneToOne
-    @JoinColumn(name = "id_colaborador", referencedColumnName = "id")
+    @JoinColumn(name = "info_colaborador", referencedColumnName = "id")
+    @JsonIgnore
     private Colaborador colaborador;
 
 }
+
+
