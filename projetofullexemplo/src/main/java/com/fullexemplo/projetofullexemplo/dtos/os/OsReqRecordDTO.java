@@ -7,6 +7,6 @@ public record OsReqRecordDTO(
         String descricao,
         LocalDate abertura,
         LocalDate encerramento,
-        UUID idColaboraodr
+        UUID idColaborador
 ) {
 }

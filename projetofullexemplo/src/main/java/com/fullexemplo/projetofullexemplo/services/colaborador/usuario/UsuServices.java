@@ -10,9 +10,12 @@ import com.fullexemplo.projetofullexemplo.repository.ColaboradorRepository;
 import com.fullexemplo.projetofullexemplo.repository.ComentarioRepository;
 import com.fullexemplo.projetofullexemplo.repository.OSRepository;
 import com.fullexemplo.projetofullexemplo.repository.UsuarioRepository;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 import java.util.UUID;
 
 @Service
@@ -35,16 +38,16 @@ public class UsuServices {
         this.osRepository = osRepository;
     }
 
-    public List<UsuResRecordDTO> readAll() {
-        List<UsuResRecordDTO> listaCol = usuarioRepository
+    public ResponseEntity<List<UsuResRecordDTO>> readAll() {
+        List<UsuResRecordDTO> listaUsu = usuarioRepository
                 .findAll()
                 .stream()
                 .map(UsuResRecordDTO::new)
                 .toList();
-        return listaCol;
+        return ResponseEntity.status(HttpStatus.OK).body(listaUsu);
     }
 
-    public Usuario create(UsuReqRecordDTO data) {
+        public ResponseEntity<Usuario> create(UsuReqRecordDTO data) {
         var dadosUsuario = new Usuario();
 
         dadosUsuario.setMatricula(data.matricula());
@@ -54,36 +57,34 @@ public class UsuServices {
 
         usuarioRepository.save(dadosUsuario);
 
-        return dadosUsuario;
+        return ResponseEntity.status(HttpStatus.CREATED).body(dadosUsuario);
     }
 
-    public Object update(UUID id, ColReqRecordDTO data) {
-        var col0 = colaboradorRepository.findById(id);
+    public ResponseEntity<Object> update(UUID id, UsuReqRecordDTO data) {
+        Optional<Usuario> usu0 = usuarioRepository.findById(id);
 
-        if (col0.isEmpty()) {
-            return null;
+        if (usu0.isEmpty()) {
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).body("DADOS DE USUARIO NÃO ENCONTRADO!");
         }
 
-        var colaborador = col0.get();
+        var usuario = usu0.get();
+        usuario.setMatricula(data.matricula());
+        usuario.setPin(data.pin());
 
-        colaborador.setNome(data.nome());
-        colaborador.setCargo(data.cargo());
-        colaborador.setSetor(data.setor());
+        usuarioRepository.save(usuario);
 
-        colaboradorRepository.save(colaborador);
-
-        return colaborador;
+        return ResponseEntity.status(HttpStatus.OK).body(usuario);
     }
 
-    public Object delete(UUID id) {
-        var col0 = colaboradorRepository.findById(id);
+    public ResponseEntity<Object> delete(UUID id) {
+        Optional<Usuario> usu0 = usuarioRepository.findById(id);
 
-        if (col0.isEmpty()) {
-            return "NOT_FOUND!";
+        if (usu0.isEmpty()) {
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).body("DADOS DE USUARIO NÃO ENCONTRADO!");
         }
 
-        colaboradorRepository.delete(col0.get());
+        usuarioRepository.delete(usu0.get());
 
-        return "COLABORADOR DELETED!";
+        return ResponseEntity.status(HttpStatus.OK).body("DADOS DE USUARIO EXCLUIDO COM SUCESSO!");
     }
 }

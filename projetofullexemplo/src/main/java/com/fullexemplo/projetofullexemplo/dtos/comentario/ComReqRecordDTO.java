@@ -7,6 +7,6 @@ public record ComReqRecordDTO(
         LocalDate dataComentario,
         String comentario,
         UUID idColaborador,
-        UUID isOs
+        UUID idOs
         ) {
 }

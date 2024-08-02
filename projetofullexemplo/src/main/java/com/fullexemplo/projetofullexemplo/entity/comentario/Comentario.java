@@ -1,5 +1,6 @@
 package com.fullexemplo.projetofullexemplo.entity.comentario;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fullexemplo.projetofullexemplo.entity.os.OS;
 import com.fullexemplo.projetofullexemplo.entity.colaborador.Colaborador;
 import jakarta.persistence.*;
@@ -22,16 +23,18 @@ public class Comentario {
     private UUID id;
 
     @Column(nullable = false)
-    private LocalDate data_comentario;
+    private LocalDate dataComentario;
 
     @Column(nullable = false)
     private String comentario;
 
     @ManyToOne
     @JoinColumn(name = "id_colaborador", referencedColumnName = "id")
+    @JsonIgnore
     private Colaborador colaborador;
 
     @ManyToOne
     @JoinColumn(name = "id_os", referencedColumnName = "id")
+    @JsonIgnore
     private OS os;
 }

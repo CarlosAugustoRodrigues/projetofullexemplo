@@ -42,9 +42,11 @@ public class Colaborador {
     private Usuario usuario;
 
     @OneToMany(mappedBy = "colaborador", fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+    @JsonIgnore
     private Set<OS> listaOs = new HashSet<>();
 
     @OneToMany(mappedBy = "colaborador", fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+    @JsonIgnore
     private Set<Comentario> listaCom = new HashSet<>();
 
     public Colaborador(ColReqRecordDTO data) {

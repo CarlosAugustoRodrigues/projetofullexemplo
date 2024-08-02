@@ -1,5 +1,6 @@
 package com.fullexemplo.projetofullexemplo.entity.os;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fullexemplo.projetofullexemplo.entity.colaborador.Colaborador;
 import com.fullexemplo.projetofullexemplo.entity.comentario.Comentario;
 import jakarta.persistence.*;
@@ -33,8 +34,11 @@ public class OS {
 
     @ManyToOne
     @JoinColumn(name = "id_colaborador", referencedColumnName = "id")
+    @JsonIgnore
     private Colaborador colaborador;
 
+
     @OneToMany(mappedBy = "os", fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+    @JsonIgnore
     private Set<Comentario> listaCom = new HashSet<>();
 }

@@ -9,7 +9,9 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
+import java.lang.annotation.Repeatable;
 import java.util.List;
+import java.util.UUID;
 
 @RestController
 @RequestMapping("/api")
@@ -29,5 +31,17 @@ public class ControllersUsuario {
     @PostMapping("/usuario")
     public ResponseEntity<Usuario> create(@RequestBody @Validated UsuReqRecordDTO data) {
         return ResponseEntity.status(HttpStatus.CREATED).body(usuServices.create(data));
+    }
+
+    @PutMapping("/usuario/{id}")
+    public ResponseEntity<Object> update(@PathVariable(value = "id")UUID id,
+                                         @RequestBody @Validated UsuReqRecordDTO data) {
+
+        return ResponseEntity.status(HttpStatus.OK).body(usuServices.update(id, data));
+    }
+
+    @DeleteMapping("/usuario/{id}")
+    public ResponseEntity<Object> delete(@PathVariable(value = "id") UUID id) {
+        return ResponseEntity.status(HttpStatus.OK).body(usuServices.delete(id));
     }
 }

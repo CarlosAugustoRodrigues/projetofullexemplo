@@ -18,7 +18,7 @@ public record ComResRecordDTO(
     public ComResRecordDTO(Comentario data) {
         this(
                 data.getId(),
-                data.getData_comentario(),
+                data.getDataComentario(),
                 data.getComentario(),
                 data.getColaborador(),
                 data.getOs()

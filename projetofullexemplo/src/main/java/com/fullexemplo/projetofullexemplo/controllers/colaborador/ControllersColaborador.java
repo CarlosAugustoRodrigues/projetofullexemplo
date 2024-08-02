@@ -10,6 +10,7 @@ import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.UUID;
 
 @RestController
 @RequestMapping("/api")
@@ -30,5 +31,17 @@ public class ControllersColaborador {
     @PostMapping("/colaborador")
     public ResponseEntity<Colaborador> create(@RequestBody @Validated ColReqRecordDTO data) {
         return ResponseEntity.status(HttpStatus.CREATED).body(colServices.create(data));
+    }
+
+    @PutMapping("/colaborador/{id}")
+    public ResponseEntity<Object> update(@PathVariable(value = "id")UUID id,
+                                         @RequestBody @Validated ColReqRecordDTO data) {
+
+        return ResponseEntity.status(HttpStatus.OK).body(colServices.update(id, data));
+    }
+
+    @DeleteMapping("/colaborador/{id}")
+    public ResponseEntity<Object> delete(@PathVariable(value = "id") UUID id) {
+        return ResponseEntity.status(HttpStatus.OK).body(colServices.delete(id));
     }
 }
