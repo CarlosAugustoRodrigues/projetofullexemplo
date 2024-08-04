@@ -25,23 +25,23 @@ public class ControllersOs {
 
     @GetMapping("/os")
     public ResponseEntity<List<OsResRecordDTO>> readAll() {
-        return ResponseEntity.status(HttpStatus.OK).body(osServices.readAll());
+        return osServices.readAll();
     }
 
     @PostMapping("/os")
     public ResponseEntity<OS> create(@RequestBody @Validated OsReqRecordDTO data) {
-        return ResponseEntity.status(HttpStatus.CREATED).body(osServices.create(data));
+        return osServices.create(data);
     }
 
     @PutMapping("/os/{id}")
     public ResponseEntity<Object> update(@PathVariable(value = "id")UUID id,
                                          @RequestBody @Validated OsReqRecordDTO data) {
-        return ResponseEntity.status(HttpStatus.OK).body(osServices.update(id, data));
+        return osServices.update(id, data);
     }
 
     @DeleteMapping("/os/{id}")
     public ResponseEntity<Object> delete(@PathVariable(value = "id") UUID id) {
-        return ResponseEntity.status(HttpStatus.OK).body(osServices.delete(id));
+        return osServices.delete(id);
     }
 }
 

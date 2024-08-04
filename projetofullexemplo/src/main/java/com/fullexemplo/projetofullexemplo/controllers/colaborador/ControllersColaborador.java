@@ -25,23 +25,23 @@ public class ControllersColaborador {
 
     @GetMapping("/colaborador")
     public ResponseEntity<List<ColResRecordDTO>> readAll() {
-        return ResponseEntity.status(HttpStatus.OK).body(colServices.readAll());
+        return colServices.readAll();
     }
 
     @PostMapping("/colaborador")
     public ResponseEntity<Colaborador> create(@RequestBody @Validated ColReqRecordDTO data) {
-        return ResponseEntity.status(HttpStatus.CREATED).body(colServices.create(data));
+        return colServices.create(data);
     }
 
     @PutMapping("/colaborador/{id}")
     public ResponseEntity<Object> update(@PathVariable(value = "id")UUID id,
                                          @RequestBody @Validated ColReqRecordDTO data) {
 
-        return ResponseEntity.status(HttpStatus.OK).body(colServices.update(id, data));
+        return colServices.update(id, data);
     }
 
     @DeleteMapping("/colaborador/{id}")
     public ResponseEntity<Object> delete(@PathVariable(value = "id") UUID id) {
-        return ResponseEntity.status(HttpStatus.OK).body(colServices.delete(id));
+        return colServices.delete(id);
     }
 }

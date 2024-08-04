@@ -25,23 +25,23 @@ public class ControllersComentario {
 
     @GetMapping("/comentario")
     public ResponseEntity<List<ComResRecordDTO>> readAll() {
-        return ResponseEntity.status(HttpStatus.OK).body(comServices.readAll());
+        return comServices.readAll();
     }
 
     @PostMapping("/comentario")
     public ResponseEntity<Comentario> create(@RequestBody @Validated ComReqRecordDTO data) {
-        return ResponseEntity.status(HttpStatus.CREATED).body(comServices.create(data));
+        return comServices.create(data);
     }
 
     @PutMapping("/comentario/`{id}")
     public ResponseEntity<Object> update(@PathVariable(value = "id")UUID id,
                                          @RequestBody @Validated ComReqRecordDTO data) {
 
-        return ResponseEntity.status(HttpStatus.OK).body(comServices.update(id, data));
+        return comServices.update(id, data);
     }
 
     @DeleteMapping("/comentario/{id}")
     public ResponseEntity<Object> delete(@PathVariable(value = "id") UUID id) {
-        return ResponseEntity.status(HttpStatus.OK).body(comServices.delete(id));
+        return comServices.delete(id);
     }
 }

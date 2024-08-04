@@ -25,23 +25,23 @@ public class ControllersUsuario {
 
     @GetMapping("/usuario")
     public ResponseEntity<List<UsuResRecordDTO>> readAll() {
-        return ResponseEntity.status(HttpStatus.OK).body(usuServices.readAll());
+        return usuServices.readAll();
     }
 
     @PostMapping("/usuario")
     public ResponseEntity<Usuario> create(@RequestBody @Validated UsuReqRecordDTO data) {
-        return ResponseEntity.status(HttpStatus.CREATED).body(usuServices.create(data));
+        return usuServices.create(data);
     }
 
     @PutMapping("/usuario/{id}")
     public ResponseEntity<Object> update(@PathVariable(value = "id")UUID id,
                                          @RequestBody @Validated UsuReqRecordDTO data) {
 
-        return ResponseEntity.status(HttpStatus.OK).body(usuServices.update(id, data));
+        return usuServices.update(id, data);
     }
 
     @DeleteMapping("/usuario/{id}")
     public ResponseEntity<Object> delete(@PathVariable(value = "id") UUID id) {
-        return ResponseEntity.status(HttpStatus.OK).body(usuServices.delete(id));
+        return usuServices.delete(id);
     }
 }
