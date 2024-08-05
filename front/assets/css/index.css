@@ -1,0 +1,56 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    --bg-gradient: linear-gradient(45deg, rgba(0,0,35,1) 0%, rgba(15,80,120,1) 50%, rgba(0,210,255,1) 100%);
+}
+
+body {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+	background: var(--bg-gradient);
+	background-size: 400% 400%;
+	animation: gradient 10s ease infinite;
+    width: 100vw;
+    min-height: 100vh;
+    height: auto;
+}
+
+body > div {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+    width: 25%;
+    height: 45vh;
+
+    box-shadow: -3px 3px 5px rgba(0,0,0,0.1);
+
+    border-radius: 2rem;
+}
+
+.form-login {
+    background: red;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+    width: 90%;
+    height: 60%;
+}
+
+@keyframes gradient {
+	0% {
+		background-position: 0% 50%;
+	}
+	50% {
+		background-position: 100% 50%;
+	}
+	100% {
+		background-position: 0% 50%;
+	}
+}
