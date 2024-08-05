@@ -33,7 +33,7 @@ public class ControllersComentario {
         return comServices.create(data);
     }
 
-    @PutMapping("/comentario/`{id}")
+    @PutMapping("/comentario/{id}")
     public ResponseEntity<Object> update(@PathVariable(value = "id")UUID id,
                                          @RequestBody @Validated ComReqRecordDTO data) {
 
