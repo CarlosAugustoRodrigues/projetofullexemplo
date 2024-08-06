@@ -3,13 +3,12 @@ package com.fullexemplo.projetofullexemplo.services.colaborador;
 import com.fullexemplo.projetofullexemplo.dtos.colaborador.ColReqRecordDTO;
 import com.fullexemplo.projetofullexemplo.dtos.colaborador.ColResRecordDTO;
 import com.fullexemplo.projetofullexemplo.entity.colaborador.Colaborador;
-import com.fullexemplo.projetofullexemplo.entity.os.OS;
 import com.fullexemplo.projetofullexemplo.repository.ColaboradorRepository;
 import com.fullexemplo.projetofullexemplo.repository.ComentarioRepository;
 import com.fullexemplo.projetofullexemplo.repository.OSRepository;
-import com.fullexemplo.projetofullexemplo.repository.UsuarioRepository;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -21,20 +20,11 @@ public class ColServices {
 
 
     ColaboradorRepository colaboradorRepository;
-    UsuarioRepository usuarioRepository;
-    ComentarioRepository comentarioRepository;
-    OSRepository osRepository;
+    PasswordEncoder passwordEncoder;
 
-    public ColServices(
-            ColaboradorRepository colaboradorRepository,
-            UsuarioRepository usuarioRepository,
-            ComentarioRepository comentarioRepository,
-            OSRepository osRepository
-    ) {
+    public ColServices(ColaboradorRepository colaboradorRepository, PasswordEncoder passwordEncoder) {
         this.colaboradorRepository = colaboradorRepository;
-        this.usuarioRepository = usuarioRepository;
-        this.comentarioRepository = comentarioRepository;
-        this.osRepository = osRepository;
+        this.passwordEncoder = passwordEncoder;
     }
 
     public ResponseEntity<List<ColResRecordDTO>> readAll() {
@@ -48,7 +38,12 @@ public class ColServices {
     }
 
     public ResponseEntity<Colaborador> create(ColReqRecordDTO data) {
-        var colaborador = new Colaborador(data);
+        var colaborador = new Colaborador();
+        colaborador.setNome(data.nome());
+        colaborador.setCargo(data.cargo());
+        colaborador.setSetor(data.setor());
+        colaborador.setMatricula(data.matricula());
+        colaborador.setPin(passwordEncoder.encode(data.pin()));
 
         colaboradorRepository.save(colaborador);
 
@@ -67,6 +62,8 @@ public class ColServices {
         colaborador.setNome(data.nome());
         colaborador.setCargo(data.cargo());
         colaborador.setSetor(data.setor());
+        colaborador.setMatricula(data.matricula());
+        colaborador.setPin(data.pin());
 
         colaboradorRepository.save(colaborador);
 
