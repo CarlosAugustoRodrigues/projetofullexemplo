@@ -44,7 +44,18 @@ body {
     height: auto;
 }
 
-body > div {
+.load {
+    width: 80px;
+    height: 80px;
+
+    border: 15px solid var(--black-opacity-2);
+    border-top-color: var(--white-opacity-2);
+    border-radius: 50%;
+
+    animation: loading 1.5s .5s ease infinite, scale-loading .5s ease;
+}
+
+.div-form {
     width: 25%;
     height: 45vh;
 
@@ -55,9 +66,11 @@ body > div {
 
     box-shadow: -5px 5px 5px var(--black-opacity);
     border-radius: 2rem;
+
+    animation: show 1s linear;
 }
 
-body h2 {
+.div-form h2 {
     text-transform: uppercase;
     font-size: 4rem;
     letter-spacing: .3rem;
@@ -81,6 +94,7 @@ body h2 {
 }
 
 .form-login div {
+    position: relative;
     width: 100%;
     display: flex;
     justify-content: center;
@@ -113,7 +127,7 @@ body h2 {
     color: var(--white-opacity);
 }
 
-.form-login button {
+.form-login > button {
     height: 4vh;
     width: auto;
 
@@ -129,9 +143,50 @@ body h2 {
     transition: .5s;
 }
 
-.form-login button:hover {
+.form-login > button:hover {
     transform: scale(1.1);
     color: var(--white);
+}
+
+.hidden {
+    display: none;
+}
+
+.animation-hide-load {
+    animation: hide .5s linear;
+}
+
+@keyframes scale-loading {
+    from {
+        transform: scale(0);
+    }
+    to {
+        transform: scale(1);
+    }
+}
+
+@keyframes show {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+@keyframes hide {
+    from {
+        opacity: 1;
+    }
+    to {
+        opacity: 0;
+    }
+}
+
+@keyframes loading {
+    100% {
+        transform: rotate(360deg);
+    }
 }
 
 @keyframes gradient {
