@@ -56,13 +56,16 @@ body {
     animation: loading 1.5s 1s ease infinite, scale-loading 1s ease;
 }
 
-.div-form, .div-form-register {
+.div-form, 
+.div-form-register,
+.div-form-change-password {
     width: 25%;
     height: 45vh;
+    padding-block: 1.5rem;
 
     display: flex;
     flex-direction: column;
-    justify-content: space-evenly;
+    justify-content: space-between;
     align-items: center;
 
     box-shadow: -5px 5px 5px var(--black-opacity);
@@ -70,7 +73,9 @@ body {
 
 }
 
-.div-form h2, .div-form-register h2 {
+.div-form h2, 
+.div-form-register h2,
+.div-form-change-password h2 {
     text-transform: uppercase;
     font-size: 4rem;
     letter-spacing: .3rem;
@@ -83,7 +88,10 @@ body {
     animation: gradient 5s ease infinite;
 }
 
-.form-login, .form-register {
+.form-login,
+.form-register,
+.form-find-by-matricula,
+.form-change-password {
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
@@ -122,11 +130,14 @@ body {
     color: var(--white);
 }
 
-.form-login input::placeholder {
+.form-login input::placeholder,
+.form-register input::placeholder,
+.form-find-by-matricula input::placeholder,
+.form-change-password input::placeholder {
     color: var(--white-opacity);
 }
 
-.form-login button, .form-register button {
+.btn-form {
     height: 4vh;
     width: auto;
 
@@ -143,19 +154,29 @@ body {
     transition: .5s;
 }
 
-.form-login button:hover, .form-register button:hover {
+.btn-form:hover {
     transform: scale(1.1);
     color: var(--white);
 }
 
+.div-form > div {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+    gap: .3rem;
+}
+
 .div-form p {
     color: var(--white);
-    font-size: 1.1rem;
+    font-size: .95rem;
     letter-spacing: .1rem;
 }
 
 .div-form p span {
     color: var(--black);
+    font-size: 1.05rem;
     text-decoration: underline;
     cursor: pointer;
 }
@@ -186,14 +207,29 @@ body {
     outline: none;
 }
 
-.form-register input::placeholder {
-    color: var(--white-opacity);
-}
-
-.div-form-register span {
+.div-form-register span,
+.div-form-change-password span {
     font-size: 1.1rem;
     cursor: pointer;
     letter-spacing: .1rem;
+}
+
+.form-find-by-matricula input,
+.form-change-password input {
+    width: 50%;
+    height: 4vh;
+    padding: .3rem;
+
+    background: transparent;
+
+    font-size: 1.1rem;
+    letter-spacing: .1rem;
+    color: var(--white);
+
+    border: none;
+    border-bottom: 2px solid var(--white);
+
+    outline: none;
 }
 
 .hidden {

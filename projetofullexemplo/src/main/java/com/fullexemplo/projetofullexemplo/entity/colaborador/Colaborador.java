@@ -33,7 +33,7 @@ public class Colaborador {
     @Column(nullable = false)
     private String setor;
 
-    @Column(nullable = false)
+    @Column(nullable = false, unique = true)
     private String matricula;
 
     @Column(nullable = false)
@@ -46,4 +46,11 @@ public class Colaborador {
     @OneToMany(mappedBy = "colaborador", fetch = FetchType.EAGER, cascade = CascadeType.ALL)
     @JsonIgnore
     private Set<Comentario> listaCom = new HashSet<>();
+
+    public Colaborador(ColReqRecordDTO data) {
+        setNome(data.nome());
+        setCargo(data.cargo());
+        setSetor(data.setor());
+        setMatricula(data.matricula());
+    }
 }

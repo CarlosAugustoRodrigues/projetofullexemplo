@@ -33,6 +33,8 @@ public class SecurityConfig {
                 .authorizeHttpRequests(authorize -> authorize
                         .requestMatchers(HttpMethod.POST, "/api/login").permitAll()
                         .requestMatchers(HttpMethod.POST, "/api/colaborador").permitAll()
+                        .requestMatchers(HttpMethod.GET, "/api/colaborador/{matricula}").permitAll()
+                        .requestMatchers(HttpMethod.PUT, "/api/colaborador/password/{matricula}").permitAll()
                         .anyRequest().authenticated()
                 )
                 .addFilterBefore(securityFilter, UsernamePasswordAuthenticationFilter.class);
