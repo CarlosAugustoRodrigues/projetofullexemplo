@@ -207,11 +207,14 @@ body {
     outline: none;
 }
 
-.div-form-register span,
-.div-form-change-password span {
-    font-size: 1.1rem;
+.div-form-register span {
+    font-size: 1rem;
     cursor: pointer;
     letter-spacing: .1rem;
+}
+
+.div-form-change-password p {
+    font-size: 1.5rem;
 }
 
 .form-find-by-matricula input,

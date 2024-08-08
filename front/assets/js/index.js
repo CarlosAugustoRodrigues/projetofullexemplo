@@ -29,30 +29,12 @@ function openFormRegister() {
         div_form_register.classList.remove('hidden');
     }, 500)
 }
-function openFormChangePassword() {
-    div_form_login.classList.remove('animation-show');
-    div_form_login.classList.add('animation-hide');
-    setTimeout(() => {
-        div_form_login.classList.add('hidden');
-        div_form_password.classList.add('animation-show');
-        div_form_password.classList.remove('hidden');
-    }, 500)
-}
 
 function closeFormRegister() {
     div_form_register.classList.remove('animation-show')
     div_form_register.classList.add('animation-hide');
     setTimeout(() => {
         div_form_register.classList.add('hidden');
-        div_form_login.classList.add('animation-show');
-        div_form_login.classList.remove('hidden');
-    }, 500)
-}
-function closeFormChangePassword() {
-    div_form_password.classList.remove('animation-show')
-    div_form_password.classList.add('animation-hide');
-    setTimeout(() => {
-        div_form_password.classList.add('hidden');
         div_form_login.classList.add('animation-show');
         div_form_login.classList.remove('hidden');
     }, 500)

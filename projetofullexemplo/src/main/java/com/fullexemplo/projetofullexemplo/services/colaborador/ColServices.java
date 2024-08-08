@@ -2,8 +2,6 @@ package com.fullexemplo.projetofullexemplo.services.colaborador;
 
 import com.fullexemplo.projetofullexemplo.dtos.colaborador.ColReqRecordDTO;
 import com.fullexemplo.projetofullexemplo.dtos.colaborador.ColResRecordDTO;
-import com.fullexemplo.projetofullexemplo.dtos.colaborador.ColUpPassRecordDTO;
-import com.fullexemplo.projetofullexemplo.dtos.colaborador.ColUpRecordDTO;
 import com.fullexemplo.projetofullexemplo.entity.colaborador.Colaborador;
 import com.fullexemplo.projetofullexemplo.repository.ColaboradorRepository;
 import org.springframework.http.HttpStatus;
@@ -69,7 +67,7 @@ public class ColServices {
 
 
     // UPDATE
-    public ResponseEntity<Object> update(UUID id, ColUpRecordDTO data) {
+    public ResponseEntity<Object> update(UUID id, ColReqRecordDTO data) {
         Optional<Colaborador> col0 = colaboradorRepository.findById(id);
 
         if (col0.isEmpty()) {
@@ -85,28 +83,6 @@ public class ColServices {
         colaboradorRepository.save(colaborador);
 
         return ResponseEntity.status(HttpStatus.OK).body(colaborador);
-    }
-
-
-    // ALTERAR SENHA
-    public ResponseEntity<Object> changePassword(String matricula, ColUpPassRecordDTO data) {
-        Optional<Colaborador> col0 = colaboradorRepository.findByMatricula(matricula);
-
-        if (col0.isEmpty()) {
-            return ResponseEntity.status(HttpStatus.NOT_FOUND).body("COLABORADOR NÃO ENCONTRADO!");
-        }
-
-        var colaborador = col0.get();
-        String currentlyPassword = colaborador.getPin();
-
-        if (passwordEncoder.encode(data.pin()) == currentlyPassword) {
-            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("NOVA SENHA NÃO PODE SER IGUAL A ATUAL!");
-        }
-
-        colaborador.setPin(passwordEncoder.encode(data.pin()));
-        colaboradorRepository.save(colaborador);
-
-        return ResponseEntity.status(HttpStatus.OK).body("SENHA ALTERADA COM SUCESSO!");
     }
 
 

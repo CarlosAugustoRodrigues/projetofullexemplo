@@ -53,4 +53,5 @@ public class Colaborador {
         setSetor(data.setor());
         setMatricula(data.matricula());
     }
+
 }

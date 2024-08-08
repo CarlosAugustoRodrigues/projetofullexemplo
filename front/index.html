@@ -30,7 +30,6 @@
 
         <div>
             <p>Não possuí uma conta? <span onclick="openFormRegister()">Registre-se</span></p>
-            <p>Esqueceu sua senha? <span onclick="openFormChangePassword()">Alterar Senha</span></p>
         </div>
         
     </div>
@@ -56,26 +55,6 @@
         <span onclick="closeFormRegister()">Voltar</span>
 
     </div>
-
-    <div class="div-form-change-password hidden">
-        <h2>Alterar Senha</h2>
-
-        <form class="form-find-by-matricula">
-            <input type="text" name="find-by-matricula" id="find-by-matricula" placeholder="Insira sua matrícula" required/>
-
-            <button class="btn-form" type="submit">Enviar</button>
-        </form>
-
-        <form class="form-change-password hidden">
-            <input type="password" name="new-password" id="new-password" placeholder="Nova Senha" required/>
-            <input type="password" name="confirm-new-password" id="confirm-new-password" placeholder="Confirme nova senha">
-
-            <button class="btn-form" type="submit">Alterar</button>
-        </form>
-
-        <span onclick="closeFormChangePassword()">Voltar</span>
-    </div>
-
 
 </body>
 <script src="./assets/js/index.js"></script>
